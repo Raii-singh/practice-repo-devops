@@ -1,0 +1,24 @@
+Evolution of Application Architecture
+
+Application deployment has evolved through three major phases:
+
+1. Physical Servers (1980s–1990s)
+- Monolithic applications
+- Physical data center servers
+- Waterfall development
+- High cost and difficult scaling
+
+2. Virtualization Era (2000s)
+- Virtual machines on shared hardware
+- N-tier architecture
+- Agile development
+- Better resource utilization and scalability
+
+3. Cloud-Native Era (2010–Present)
+- Microservices and containers
+- Cloud platforms and Kubernetes
+- DevOps and CI/CD
+- Auto-scaling, faster deployments, and lower costs
+
+Key Takeaway:
+Application architecture has shifted from hardware-focused systems to cloud-native, software-driven solutions that are faster, scalable, and easier to manage.

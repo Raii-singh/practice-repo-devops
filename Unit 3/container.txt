@@ -1,0 +1,23 @@
+Containers
+
+Containers are lightweight and isolated environments used to run applications along with their dependencies. They ensure that an application behaves the same across development, testing, and production environments.
+
+Characteristics:
+- Lightweight and fast
+- Share the host operating system kernel
+- Portable across different platforms
+- Consume fewer resources than virtual machines
+- Start within seconds
+
+Advantages:
+- Consistent application deployment
+- Better resource utilization
+- Easy scaling and management
+- Improved application portability
+- Supports microservices architecture
+
+Example:
+A web application can run inside a container with all its required libraries and configurations, ensuring it works the same on every system.
+
+Key Takeaway:
+Containers package applications and their dependencies into a single unit, making deployment faster, more reliable, and easier to manage.

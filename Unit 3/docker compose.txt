@@ -1,0 +1,46 @@
+Docker Compose Commands
+
+docker compose up
+# Start all services
+
+docker compose up -d
+# Start in background
+
+docker compose down
+# Stop and remove containers
+
+docker compose down -v
+# Remove containers and volumes
+
+docker compose build
+# Build images
+
+docker compose up --build
+# Build and start services
+
+docker compose ps
+# Show running services
+
+docker compose logs
+# View logs
+
+docker compose logs -f
+# Live logs
+
+docker compose stop
+# Stop services
+
+docker compose start
+# Start stopped services
+
+docker compose restart
+# Restart services
+
+docker compose pull
+# Pull latest images
+
+docker compose config
+# Validate compose file
+
+docker compose config --services
+# List all services
