@@ -1,0 +1,145 @@
+POSTGRES_DB=mydb
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+
+SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/mydb
+SPRING_DATASOURCE_USERNAME=postgres
+SPRING_DATASOURCE_PASSWORD=postgres
+
+REACT_APP_API_URL=http://localhost:8080
+
+
+
+
+services:
+
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    container_name: spring_boot_app
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./frontend
+    container_name: react_app
+    depends_on:
+      - backend
+    environment:
+      REACT_APP_API_URL: ${REACT_APP_API_URL}
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data:
+
+
+
+
+  cd backend 
+notepad dockerfile 
+FROM eclipse-temurin:17-jdk
+
+WORKDIR /app
+
+COPY target/*.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","app.jar"]
+
+
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>backend</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <packaging>jar</packaging>
+
+    <name>backend</name>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;

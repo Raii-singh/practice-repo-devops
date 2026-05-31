@@ -1,0 +1,68 @@
+git init
+git add .
+git commit -m "Completed multi-container CI/CD project"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/multi-container-app.git
+git push -u origin main
+
+GitHub repo
+Actions tab
+
+Multi-Container CI/CD Pipeline successful
+
+--------
+
+
+name: Multi-Container CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build-and-deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Frontend Image
+        run: docker build -t frontend-app ./frontend
+
+      - name: Build Backend Image
+        run: docker build -t backend-app ./backend
+
+      - name: Verify Docker Images
+        run: docker images
+
+
+        -------------
+
+
+
+        services:
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+
+  mysql:
+    image: mysql:8
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: appdb
+
+    ports:
+      - "3306:3306"

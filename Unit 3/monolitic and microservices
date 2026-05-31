@@ -1,0 +1,48 @@
+Monolithic Architecture
+
+A monolithic application is built as a single unit where all components such as frontend, backend, and database logic are tightly coupled together.
+
+Characteristics:
+- Single codebase
+- Single deployment unit
+- Easy to develop for small applications
+- Difficult to scale individual components
+- A failure in one module can affect the entire application
+
+Example:
+An e-commerce application where user management, product catalog, and payment system are all part of one application.
+
+---
+
+Microservices Architecture
+
+Microservices architecture divides an application into multiple small and independent services. Each service performs a specific business function and communicates with other services through APIs.
+
+Characteristics:
+- Independent services
+- Independent deployment and scaling
+- Better fault isolation
+- Faster development and updates
+- Supports different technologies for different services
+
+Example:
+An e-commerce application with separate services for users, products, orders, payments, and notifications.
+
+---
+
+Monolithic vs Microservices
+
+Monolithic:
+- Single application
+- Easier to start
+- Difficult to scale
+- Slower deployments
+
+Microservices:
+- Multiple independent services
+- Easy to scale specific services
+- Faster deployments
+- Better maintainability
+
+Key Takeaway:
+Monolithic architecture is suitable for small applications, while microservices are preferred for large and complex applications requiring scalability and flexibility.
